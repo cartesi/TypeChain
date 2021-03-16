@@ -44,6 +44,12 @@ export type Event3_uint256 = ContractEventLog<{
   value1: string;
   0: string;
 }>;
+export type Event4 = ContractEventLog<{
+  value1: string;
+  data: [string, string];
+  0: string;
+  1: [string, string];
+}>;
 export type NoArgsEvent = ContractEventLog<{}>;
 
 export interface Events extends BaseContract {
@@ -63,6 +69,8 @@ export interface Events extends BaseContract {
     emit_event3(): NonPayableTransactionObject<void>;
 
     emit_event3_overloaded(): NonPayableTransactionObject<void>;
+
+    emit_event4(): NonPayableTransactionObject<void>;
   };
   events: {
     Event1(cb?: Callback<Event1>): EventEmitter;
@@ -83,6 +91,9 @@ export interface Events extends BaseContract {
       cb?: Callback<Event3_uint256>
     ): EventEmitter;
 
+    Event4(cb?: Callback<Event4>): EventEmitter;
+    Event4(options?: EventOptions, cb?: Callback<Event4>): EventEmitter;
+
     NoArgsEvent(cb?: Callback<NoArgsEvent>): EventEmitter;
     NoArgsEvent(
       options?: EventOptions,
@@ -97,6 +108,9 @@ export interface Events extends BaseContract {
 
   once(event: "Event2", cb: Callback<Event2>): void;
   once(event: "Event2", options: EventOptions, cb: Callback<Event2>): void;
+
+  once(event: "Event4", cb: Callback<Event4>): void;
+  once(event: "Event4", options: EventOptions, cb: Callback<Event4>): void;
 
   once(event: "NoArgsEvent", cb: Callback<NoArgsEvent>): void;
   once(

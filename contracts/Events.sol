@@ -1,4 +1,5 @@
 pragma solidity ^0.6.4;
+pragma experimental ABIEncoderV2;
 
 
 contract Events {
@@ -31,6 +32,17 @@ contract Events {
   function emit_event3_overloaded() public {
     emit Event3(1);
   }
+
+  struct EventData {
+    uint256 index;
+    string name;
+  }
+  event Event4(uint256 indexed value1, EventData data);
+
+  function emit_event4() public {
+    emit Event4(1, EventData(2, "test"));
+  }
+
 
   event NoArgsEvent();
 }
