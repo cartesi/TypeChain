@@ -1,5 +1,4 @@
 [
-
   {
     "inputs": [{ "internalType": "uint256", "name": "chainId_", "type": "uint256" }],
     "payable": false,
@@ -36,6 +35,23 @@
       { "indexed": false, "internalType": "uint256", "name": "wad", "type": "uint256" }
     ],
     "name": "Transfer",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "address", "name": "src", "type": "address" },
+      {
+        "indexed": false,
+        "name": "data",
+        "type": "tuple",
+        "components": [
+          { "name": "index", "type": "uint256" },
+          { "name": "name", "type": "string" }
+        ]
+      }
+    ],
+    "name": "Tuple",
     "type": "event"
   },
   {
